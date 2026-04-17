@@ -1,39 +1,49 @@
-// @ts-check
 import { defineConfig } from "astro/config";
 import starlight from "@astrojs/starlight";
+import starlightThemeBlack from "starlight-theme-black";
 
 export default defineConfig({
   site: "https://demo.netdocs.netseries.dev/",
   integrations: [
     starlight({
       title: "NetDocs by NetSeries",
-      defaultLocale: "en",
+      plugins: [
+        starlightThemeBlack({
+          footerText: "NetDocs by NetSeries",
+        }),
+      ],
+      defaultLocale: "root",
+      lastUpdated: true,
       locales: {
-        en: { label: "English" },
-        nl: { label: "Nederlands", lang: "nl" },
+        root: {
+          label: "English",
+          lang: "en",
+        },
+        nl: {
+          label: "Nederlands",
+          lang: "nl",
+        },
       },
-      social: [{ icon: "github", label: "GitHub", href: "https://github.com/..." }],
+      social: [{ icon: "github", label: "GitHub", href: "https://github.com/netseries" }],
       sidebar: [
         {
+          label: "NetDocs",
+          autogenerate: { directory: "NetDocs" },
+        },
+        {
           label: "NetSeries",
-          // Vertaling voor de label in het menu
-          translations: { nl: "NetSeries" },
-          // Laat 'en/' weg! Starlight zoekt automatisch in de huidige taalmap
           autogenerate: { directory: "NetSeries" },
         },
         {
           label: "NetForce",
-          translations: { nl: "NetForce" },
           autogenerate: { directory: "NetForce" },
         },
         {
           label: "NetMap",
-          translations: { nl: "NetMap" },
           autogenerate: { directory: "NetMap" },
         },
         {
           label: "NetScope",
-          translations: { nl: "NetScope" },
           autogenerate: { directory: "NetScope" },
         },
       ],
