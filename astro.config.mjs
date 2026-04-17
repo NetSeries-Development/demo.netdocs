@@ -3,6 +3,7 @@ import { defineConfig } from "astro/config";
 import starlight from "@astrojs/starlight";
 
 export default defineConfig({
+  site: "https://NetSeries-Development.github.io",
   integrations: [
     starlight({
       title: "NetDocs by NetSeries",
